@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+    <description>manager</description>
+    <tlib-version>1.0</tlib-version>
+    <short-name>tyb</short-name>
+    <uri>http://www.simon.com</uri>
+    <tag>
+        <name>loginDate</name>
+        <tag-class>com.taoyb.simon.common.tag.TestTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <!--<tag>
+        <name>ulli</name>
+        <tag-class>com.simon.web.tag.BootstrapULLITag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>number</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>-->
+    <tag>
+        <name>menuList</name>
+        <tag-class>com.taoyb.simon.common.tag.MenuListTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>number</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>
