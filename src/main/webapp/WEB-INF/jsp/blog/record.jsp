@@ -6,28 +6,19 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<link rel="stylesheet" href="../../plugIn_web/zTree/css/demo.css" type="text/css">--%>
+<script type="text/javascript" src="../../plugIn_web/zTree/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="../../plugIn_web/zTree/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="../../plugIn_web/zTree/js/jquery.ztree.exedit.js"></script>
+
 
 <SCRIPT type="text/javascript">
     <!--
-  /*  var setting = {
+    var setting = {
         async: {
             enable: true,
             url:"/menus/treeLeft",
             autoParam:["id=id", "pId=pid"]
-        }, callback: {
-            onAsyncSuccess: zTreeRegisterTarget
-        }
-    };
-    function zTreeRegisterTarget(event, treeId, treeNode) {
-        initUI($('#'+treeId));
-    }
-    $(document).ready(function(){
-        $.fn.zTree.init($("#treeDemo"), setting);
-    });*/
-    //-->
-
-    var setting = {
+        },
         view: {
             addHoverDom: addHoverDom,
             removeHoverDom: removeHoverDom,
@@ -45,9 +36,9 @@
             }
         },
         callback: {
-            beforeDrag: beforeDrag,
-            beforeEditName: beforeEditName,
-            beforeRemove: beforeRemove,
+//            beforeDrag: beforeDrag,
+//            beforeEditName: beforeEditName,
+//            beforeRemove: beforeRemove,
             beforeRename: beforeRename,
             onRemove: onRemove,
             onRename: onRename
@@ -55,18 +46,18 @@
     };
 
     var zNodes =[
-        { id:1, pId:0, name:"父节点 1", open:true},
-        { id:11, pId:1, name:"叶子节点 1-1"},
-        { id:12, pId:1, name:"叶子节点 1-2"},
-        { id:13, pId:1, name:"叶子节点 1-3"},
-        { id:2, pId:0, name:"父节点 2", open:true},
-        { id:21, pId:2, name:"叶子节点 2-1"},
-        { id:22, pId:2, name:"叶子节点 2-2"},
-        { id:23, pId:2, name:"叶子节点 2-3"},
-        { id:3, pId:0, name:"父节点 3", open:true},
-        { id:31, pId:3, name:"叶子节点 3-1"},
-        { id:32, pId:3, name:"叶子节点 3-2"},
-        { id:33, pId:3, name:"叶子节点 3-3"}
+        { id:1, pId:0, name:"parent node 1", open:true},
+        { id:11, pId:1, name:"leaf node 1-1"},
+        { id:12, pId:1, name:"leaf node 1-2"},
+        { id:13, pId:1, name:"leaf node 1-3"},
+        { id:2, pId:0, name:"parent node 2", open:true},
+        { id:21, pId:2, name:"leaf node 2-1"},
+        { id:22, pId:2, name:"leaf node 2-2"},
+        { id:23, pId:2, name:"leaf node 2-3"},
+        { id:3, pId:0, name:"parent node 3", open:true },
+        { id:31, pId:3, name:"leaf node 3-1"},
+        { id:32, pId:3, name:"leaf node 3-2"},
+        { id:33, pId:3, name:"leaf node 3-3"}
     ];
     var log, className = "dark";
     function beforeDrag(treeId, treeNodes) {
@@ -78,7 +69,7 @@
         var zTree = $.fn.zTree.getZTreeObj("treeDemo");
         zTree.selectNode(treeNode);
         setTimeout(function() {
-            if (confirm("进入节点 -- " + treeNode.name + " 的编辑状态吗？")) {
+            if (confirm("Start node '" + treeNode.name + "' editorial status?")) {
                 setTimeout(function() {
                     zTree.editName(treeNode);
                 }, 0);
@@ -91,7 +82,7 @@
         showLog("[ "+getTime()+" beforeRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
         var zTree = $.fn.zTree.getZTreeObj("treeDemo");
         zTree.selectNode(treeNode);
-        return confirm("确认删除 节点 -- " + treeNode.name + " 吗？");
+        return confirm("Confirm delete node '" + treeNode.name + "' it?");
     }
     function onRemove(e, treeId, treeNode) {
         showLog("[ "+getTime()+" onRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
@@ -103,7 +94,7 @@
             setTimeout(function() {
                 var zTree = $.fn.zTree.getZTreeObj("treeDemo");
                 zTree.cancelEditName();
-                alert("节点名称不能为空.");
+                alert("Node name can not be empty.");
             }, 0);
             return false;
         }
@@ -157,10 +148,10 @@
     }
 
     $(document).ready(function(){
-        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        $.fn.zTree.init($("#treeDemo"), setting);
         $("#selectAll").bind("click", selectAll);
     });
-
+    //-->
 </SCRIPT>
 <div class="pageContent" style="padding:2px">
     <div class="tabs">
