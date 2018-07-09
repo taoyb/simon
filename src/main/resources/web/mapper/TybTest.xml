@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.taoyb.simon.web.model.TybTest">
+    <sql id="insertSql">
+        <trim suffix="" suffixOverrides=",">
+            <if test="testName != null">test_name,</if>
+            <if test="testEditor != null">test_editor,</if>
+            <if test="testWbsr != null">test_wbsr,</if>
+            <if test="testCzdh != null">test_czdh,</if>
+            <if test="testSzsr != null">test_szsr,</if>
+            <if test="testXlcd != null">test_xlcd,</if>
+            <if test="testRqgs != null">test_rqgs,</if>
+        </trim>
+    </sql>
+    <sql id="insertSqlValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="testName != null">#{testName},</if>
+            <if test="testEditor != null">#{testEditor},</if>
+            <if test="testWbsr != null">#{testWbsr},</if>
+            <if test="testCzdh != null">#{testCzdh},</if>
+            <if test="testSzsr != null">#{testSzsr},</if>
+            <if test="testXlcd != null">#{testXlcd},</if>
+            <if test="testRqgs != null">#{testRqgs},</if>
+        </trim>
+    </sql>
+    <sql id="updateTestSql">
+        <trim suffix="" suffixOverrides=",">
+            <if test="testName!=null">test_name=#{testName},</if>
+            <if test="testEditor!=null">test_editor=#{testEditor},</if>
+            <if test="testWbsr!=null">test_wbsr=#{testWbsr},</if>
+            <if test="testCzdh!=null">test_czdh=#{testCzdh},</if>
+            <if test="testSzsr!=null">test_szsr=#{testSzsr},</if>
+            <if test="testXlcd!=null">test_xlcd=#{testXlcd},</if>
+            <if test="testRqgs!=null">test_rqgs=#{testRqgs},</if>
+        </trim>
+    </sql>
+    <insert id="add" parameterType="TybTest">
+        INSERT INTO tyb_test(<include refid="insertSql"/>)
+        VALUES (<include refid="insertSqlValue"/>)
+    </insert>
+    <update id="update" parameterType="TybTest">
+        UPDATE tyb_test SET <include refid="updateTestSql"/> WHERE test_id=#{testId}
+    </update>
+    <delete id="delete" parameterType="long">
+        DELETE FROM tyb_test WHERE test_id=#{testId}
+    </delete>
+    <select id="findAllTests" resultType="TybTest">
+        select * from tyb_test where 1=1 <if test="testName != null">AND test_name like "%"#{testName}"%"</if> order by test_id DESC limit #{pageNo},#{pageSize}
+    </select>
+    <select id="findAllTestsTotal" resultType="int">
+        select count(*) from tyb_test where 1=1 <if test="testName != null">AND test_name like "%"#{testName}"%"</if>
+    </select>
+    <select id="queryById" resultType="TybTest" parameterType="long">
+        select * from tyb_test where test_id = #{id}
+    </select>
+</mapper>

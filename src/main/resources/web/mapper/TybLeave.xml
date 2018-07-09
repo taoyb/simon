@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.taoyb.simon.web.model.TybLeave">
+    <sql id="insertSql">
+        <trim suffix="" suffixOverrides=",">
+            <if test="user != null">user_id,</if>
+            <if test="leaveDate != null">leave_date,</if>
+            <if test="leaveDays != null">leave_day,</if>
+            <if test="leaveReason != null">leave_reason,</if>
+            <if test="leaveState != null">leave_state,</if>
+            <if test="processInstanceId != null">processInstanceId,</if>
+        </trim>
+    </sql>
+    <sql id="insertSqlValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="user != null">#{user.userId},</if>
+            <if test="leaveDate != null">#{leaveDate},</if>
+            <if test="leaveDays != null">#{leaveDays},</if>
+            <if test="leaveReason != null">#{leaveReason},</if>
+            <if test="leaveState != null">#{leaveState},</if>
+            <if test="processInstanceId != null">#{processInstanceId},</if>
+        </trim>
+    </sql>
+    <sql id="updateSqlValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="user != null">user_id = #{user.userId},</if>
+            <if test="leaveDate != null">leave_date = #{leaveDate},</if>
+            <if test="leaveDays != null">leave_day = #{leaveDays},</if>
+            <if test="leaveReason != null">leave_reason = #{leaveReason},</if>
+            <if test="leaveState != null">leave_state = #{leaveState},</if>
+            <if test="processInstanceId != null">processInstanceId = #{processInstanceId},</if>
+        </trim>
+    </sql>
+    <insert id="add" parameterType="TybLeave">
+        INSERT INTO tyb_leave(<include refid="insertSql"/>)
+        VALUES (<include refid="insertSqlValue"/>)
+    </insert>
+    <update id="update" parameterType="TybLeave">
+        UPDATE tyb_leave SET
+        <include refid="updateSqlValue"/>
+        WHERE leave_id = #{leaveId};
+    </update>
+    <delete id="delete" parameterType="long">
+        DELETE FROM tyb_leave WHERE leave_id = #{leaveId};
+    </delete>
+    <select id="findAllLeaves" resultType="TybLeave">
+        select * from tyb_leave where 1=1 order by leave_id DESC limit #{pageNo},#{pageSize}
+    </select>
+    <select id="findAllLeavesTotal" resultType="int">
+        select count(*) from tyb_leave where 1=1
+    </select>
+    <select id="queryById" resultType="TybLeave" parameterType="long">
+        select * from tyb_leave where leave_id = #{leaveId}
+    </select>
+</mapper>
