@@ -80,8 +80,3 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
 
     <!-- ******************** root：定义日志的level、appender，且最多只能配置一个 end ******************** -->
 </configuration>
-
-        作者：yuanzicheng
-        链接：https://www.jianshu.com/p/d68de488462c
-        來源：简书
-        简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
