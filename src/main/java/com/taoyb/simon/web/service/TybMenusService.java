@@ -17,6 +17,8 @@ public interface TybMenusService extends BaseDao<TybMenus,Long> {
 
     public List<Tree> findMenuByTree(String pid, String menuBelong);
 
+    public List<TybMenus> findMenuByType(String menuType);
+
     public List<TybMenus> findAllByParentId(Long parentid, String menuBelong);
 
     public Pager<TybMenus> findMenuByParentIdPager(Long parentid, Integer pagerNum, Integer pagerSize);

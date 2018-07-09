@@ -26,7 +26,7 @@ public class Config {
     public String getProBelong() {
         return proBelong;
     }
-    @Value("${wechat.token}")
+//    @Value("${wechat.token}")
     private String wechatToken;
     public String getWechatToken() {
         return wechatToken;

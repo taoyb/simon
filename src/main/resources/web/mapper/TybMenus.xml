@@ -15,6 +15,7 @@
             <if test="menuStat != null">menu_stat,</if>
             <if test="orderId != null">order_id,</if>
             <if test="menuBelong != null">menu_belong,</if>
+            <if test="menuType != null">menu_type,</if>
         </trim>
     </sql>
     <sql id="insertSqlValue">
@@ -28,6 +29,7 @@
             <if test="menuStat != null">#{menuStat},</if>
             <if test="orderId != null">#{orderId},</if>
             <if test="menuBelong != null">#{menuBelong},</if>
+            <if test="menuType != null">#{menuType},</if>
         </trim>
     </sql>
     <sql id="updateSqlValue">
@@ -41,6 +43,7 @@
             <if test="menuStat != null">menu_stat = #{menuStat},</if>
             <if test="orderId != null">order_id = #{orderId},</if>
             <if test="menuBelong != null">menu_belong = #{menuBelong},</if>
+            <if test="menuType != null">menu_type = #{menuType},</if>
         </trim>
     </sql>
     <insert id="add" parameterType="TybMenus">
@@ -72,5 +75,8 @@
     </select>
     <select id="findMenuByParentIdPagerTotal" resultType="int">
         SELECT count(*) FROM tyb_menus WHERE menu_parentid = #{parentid} AND menu_belong = #{menuBelong}
+    </select>
+    <select id="findMenuByType" resultType="TybMenus" >
+      SELECT * FROM tyb_menus WHERE menu_type = #{menuType} ORDER BY order_id asc
     </select>
 </mapper>

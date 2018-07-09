@@ -1,4 +1,5 @@
 package com.taoyb.simon.common;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -13,10 +14,11 @@ import javax.servlet.http.HttpServletResponse;
  * 登陆页设置
  */
 @Controller
-public class IndexController extends MultiActionController{
+public class IndexController extends MultiActionController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @RequestMapping(value = "/index")
-    public String index(HttpServletRequest request, HttpServletResponse response){
-        return "blog/index";
+    public String index(HttpServletRequest request, HttpServletResponse response) {
+        return "forward:/blog/findHeadMenu";
     }
 }

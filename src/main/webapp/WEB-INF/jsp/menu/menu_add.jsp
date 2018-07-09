@@ -7,6 +7,7 @@
   菜单添加
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="../common/tag.jsp"%>
 <div class="pageContent">
     <form method="post" action="/menus/menuAdd" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
         <input type="hidden" name="menuParentid" value="${pid}">
@@ -20,6 +21,13 @@
             <div class="unit">
                 <label>菜单路径：</label>
                 <input type="text" name="menuUrl" size="30" value="${menu.menuUrl}" />
+            </div>
+            <div class="unit">
+                <label>菜单路径：</label>
+                <select name="menuType" class="required combox" >
+                    <option value="backstage" <c:if test="${menu.menuType eq 'backstage'}">selected</c:if>> 后台 </option>
+                    <option value="blog" <c:if test="${menu.menuType eq 'blog'}">selected</c:if>> 博客 </option>
+                </select>
             </div>
         </div>
         <div class="formBar">

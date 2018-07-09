@@ -144,7 +144,7 @@
                 </li>
                 <%--<li><a href="/workflow/create" height="400" title="在线流程设计" >流程设计</a></li>--%>
                 <li><a href="changepwd.html" target="dialog" width="600">设置</a></li>
-                <li><a href="http://www.cnblogs.com/dwzjs" target="_blank">博客</a></li>
+                <li><a href="/blog/findHeadMenu" target="_blank">博客</a></li>
                 <li><a href="http://weibo.com/dwzui" target="_blank">微博</a></li>
                 <li><a href="/login/loginOut">退出</a></li>
             </ul>
@@ -166,7 +166,19 @@
             </div>
         </div>
         <div id="sidebar">
-            <tyb:menuList number="0"/>
+            <div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
+            <div class="accordion" fillSpace="sidebar">
+                <tyb:menuList number="0"/>
+                <div class="accordionHeader">
+                    <h2><span>Folder</span>博客</h2>
+                </div>
+                <div class="accordionContent">
+                    <ul class="tree treeFolder">
+                        <li><a  rel="demo_page1">首页</a></li>
+                        <li><a href="/blog/record_main" target="navTab" rel="pagination2">我的记录</a></li>
+                    </ul>
+                </div>
+            </div>
             <%--<div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
             <div class="accordion" fillSpace="sidebar">
                 <div class="accordionHeader">

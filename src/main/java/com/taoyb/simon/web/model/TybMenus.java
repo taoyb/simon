@@ -10,6 +10,10 @@ public class TybMenus implements Serializable {
     public final static Integer STAT_JY = 0;//禁用
     public final static Integer STAT_QY = 1;//启用
     public final static Integer STAT_FJ = 2;//有子级
+    public final static String TYPE_BLOG = "blog";//有子级
+    public final static String TYPE_BACKSTAGE = "backstage";//有子级
+
+
     private Long menuId;//菜单id
     private String menuName;//菜单名称
     private Long menuParentid;//父级id
@@ -17,6 +21,7 @@ public class TybMenus implements Serializable {
     private String imgUrl;//图片路径
     private int imgWidth;//图片宽度
     private int imgHeight;//图片高度
+    private String menuType;//菜单类型
 
     public String getMenuBelong() {
         return menuBelong;
@@ -91,5 +96,13 @@ public class TybMenus implements Serializable {
     public TybMenus setMenuStat(int menuStat) {
         this.menuStat = menuStat;
         return this;
+    }
+
+    public String getMenuType() {
+        return menuType;
+    }
+
+    public void setMenuType(String menuType) {
+        this.menuType = menuType;
     }
 }

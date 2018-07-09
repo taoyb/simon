@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="../common/tag.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,13 +24,10 @@
 <body>
     <nav class="uk-navbar">
         <ul class="uk-navbar-nav uk-hidden-small uk-navbar-center">
-            <li class="uk-active"><a href="">首页</a></li>
-            <li class="uk-active"><a href="">首页1</a></li>
-            <li class="uk-active"><a href="">首页2</a></li>
-            <li class="uk-active"><a href="">首页3</a></li>
-            <li class="uk-active"><a href="">首页4</a></li>
-            <li><a href="#my-id">Item</a></li>
-            <li class="uk-parent" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
+            <c:forEach items="${list}" var="m" varStatus="l">
+                <li class="uk-active"><a href="">${m.menuName}${l.index}</a></li>
+            </c:forEach>
+            <%--<li class="uk-parent" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
                 <a href="">Parent</a>
                 <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" style="top: 40px; left: 0px;">
                     <ul class="uk-nav uk-nav-navbar">
@@ -42,7 +40,7 @@
                         <li><a href="#">Separated item</a></li>
                     </ul>
                 </div>
-            </li>
+            </li>--%>
         </ul>
         <div class="uk-navbar-flip">
             <ul class="uk-navbar-nav">

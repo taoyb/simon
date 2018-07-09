@@ -31,7 +31,7 @@ public class MenuListTag extends TagSupport {
             String str = "";
             for (int i = 0; i < list.size(); i++) {
                 TybMenus tm = list.get(i);
-                str += "<div class=\"toggleCollapse\"><h2>"+tm.getMenuName()+"</h2><div>收缩</div></div>\n<div class=\"accordion\" fillSpace=\"sidebar\">\n";
+                /*str += "<div class=\"toggleCollapse\"><h2>"+tm.getMenuName()+"</h2><div>收缩</div></div>\n<div class=\"accordion\" fillSpace=\"sidebar\">\n";*/
                 List<TybMenus> parList = tybMenusService.findAllByParentId(tm.getMenuId(),"web");
                 for (int j = 0; j < parList.size(); j++) {
                     TybMenus tmj = parList.get(j);
@@ -52,7 +52,7 @@ public class MenuListTag extends TagSupport {
                     }
                     str+="</ul>\n</div>";
                 }
-                str+="</div>";
+                /*str+="</div>";*/
             }
             /*for (int i = 0; i < list.size(); i++) {
                 TybMenus tm = list.get(i);

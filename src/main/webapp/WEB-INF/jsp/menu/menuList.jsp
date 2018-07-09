@@ -25,6 +25,7 @@
             <tr>
                 <th width="80">ID</th>
                 <th width="80">名称</th>
+                <th width="80">类型</th>
                 <th width="120">路径</th>
             </tr>
         </thead>
@@ -33,6 +34,12 @@
                 <tr target="sid_menus" rel="${menu.menuId}">
                     <td width="80">${menu.menuId}</td>
                     <td>${menu.menuName}</td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${menu.menuType eq 'blog'}">博客菜单</c:when>
+                            <c:otherwise>后台菜单</c:otherwise>
+                        </c:choose>
+                    </td>
                     <td>${menu.menuUrl}</td>
                 </tr>
             </c:forEach>

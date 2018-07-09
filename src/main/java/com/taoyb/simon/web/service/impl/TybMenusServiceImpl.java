@@ -109,4 +109,11 @@ public class TybMenusServiceImpl extends AbstractBaseDao<TybMenus,Long> implemen
         }
         return treeList;
     }
+
+    @Override
+    public List<TybMenus> findMenuByType(String menuType) {
+        Map map = new HashMap<>();
+        map.put("menuType",menuType);
+        return this.findAllByKey(map,".findMenuByType");
+    }
 }
