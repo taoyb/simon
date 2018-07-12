@@ -14,11 +14,11 @@
 <SCRIPT type="text/javascript">
     <!--
     var setting = {
-        async: {
+        /*async: {
             enable: true,
             url:"/blog/record_left",
             autoParam:["id=id", "pId=pid"]
-        },
+        },*/
         view: {
             addHoverDom: addHoverDom,
             removeHoverDom: removeHoverDom,
@@ -129,8 +129,16 @@
     function addHoverDom(treeId, treeNode) {
         var sObj = $("#" + treeNode.tId + "_span");
         if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
-        var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
-            + "' title='add node' onfocus='this.blur();'></span>";
+        var addStr = "";
+        if (treeNode.pId == null || treeNode.pId == '0'){
+            addStr = "<span class='button roots_docu' id='addPBtn_" + treeNode.tId
+                + "' title='添加根节点' onfocus='this.blur();'></span>"
+                + "<span class='button add' id='addBtn_" + treeNode.tId
+                + "' title='添加子节点' onfocus='this.blur();'></span>"
+        }else{
+            addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+                + "' title='添加子节点' onfocus='this.blur();'></span>";
+        }
         sObj.after(addStr);
         var btn = $("#addBtn_"+treeNode.tId);
         if (btn) btn.bind("click", function(){
@@ -140,7 +148,13 @@
         });
     };
     function removeHoverDom(treeId, treeNode) {
-        $("#addBtn_"+treeNode.tId).unbind().remove();
+        if (treeNode.pId == null || treeNode.pId == '0'){
+            $("#addBtn_"+treeNode.tId).unbind().remove();
+            $("#addPBtn_"+treeNode.tId).unbind().remove();
+        }else{
+            $("#addBtn_"+treeNode.tId).unbind().remove();
+        }
+
     };
     function selectAll() {
         var zTree = $.fn.zTree.getZTreeObj("treeDemo");
@@ -148,7 +162,7 @@
     }
 
     $(document).ready(function(){
-        $.fn.zTree.init($("#treeDemo"), setting);
+        $.fn.zTree.init($("#treeDemo"), setting,zNodes);
         $("#selectAll").bind("click", selectAll);
     });
     //-->
