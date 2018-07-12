@@ -16,7 +16,7 @@
     var setting = {
         async: {
             enable: true,
-            url:"/menus/treeLeft",
+            url:"/blog/record_left",
             autoParam:["id=id", "pId=pid"]
         },
         view: {
