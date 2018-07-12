@@ -37,7 +37,8 @@ public class BlogController extends BaseController {
     public @ResponseBody
     List<Tree> recordLeft(HttpServletRequest request) {
         String pid = request.getParameter("id");
-        List<Tree> list= tybMenusService.findMenuByTree(pid,"web");
+        List<Tree> list= tybRecordService.findTreeRecordAll(pid);
+//        tybMenusService.findMenuByTree(pid,"web");
         return list;
     }
 

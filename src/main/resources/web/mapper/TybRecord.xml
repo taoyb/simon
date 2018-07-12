@@ -7,22 +7,28 @@
     <sql id="insertSql">
         <trim suffix="" suffixOverrides=",">
             <if test="recordId != null">record_id,</if>
+            <if test="ctime != null">ctime,</if>
             <if test="recordName != null">record_name,</if>
             <if test="recordDesc != null">record_desc,</if>
+            <if test="recordParentId != null">record_parentid,</if>
         </trim>
     </sql>
     <sql id="insertSqlValue">
         <trim suffix="" suffixOverrides=",">
             <if test="recordId != null">#{recordId},</if>
+            <if test="ctime != null">#{ctime},</if>
             <if test="recordName != null">#{recordName},</if>
             <if test="recordDesc != null">#{recordDesc},</if>
+            <if test="recordParentId != null">#{recordParentId},</if>
         </trim>
     </sql>
     <sql id="updateTestSql">
         <trim suffix="" suffixOverrides=",">
             <if test="recordId!=null">record_id=#{recordId},</if>
+            <if test="ctime!=null">ctime=#{ctime},</if>
             <if test="recordName!=null">record_name=#{recordName},</if>
             <if test="recordDesc!=null">record_desc=#{recordDesc},</if>
+            <if test="recordParentId!=null">record_parentid=#{recordParentId},</if>
         </trim>
     </sql>
     <insert id="add" parameterType="TybRecord">
@@ -43,5 +49,8 @@
     </select>
     <select id="queryById" resultType="TybRecord" parameterType="long">
         select * from tyb_record where record_id = #{id}
+    </select>
+    <select id="findByParentId" resultType="TybRecord" >
+      select * from tyb_record where record_parentid = #{parentId} ORDER BY record_id asc
     </select>
 </mapper>
