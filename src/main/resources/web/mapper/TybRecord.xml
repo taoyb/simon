@@ -31,7 +31,7 @@
             <if test="recordParentId!=null">record_parentid=#{recordParentId},</if>
         </trim>
     </sql>
-    <insert id="add" parameterType="TybRecord">
+    <insert id="add" useGeneratedKeys="true" keyProperty="recordId" parameterType="TybRecord">
         INSERT INTO tyb_record(<include refid="insertSql"/>)
         VALUES (<include refid="insertSqlValue"/>)
     </insert>

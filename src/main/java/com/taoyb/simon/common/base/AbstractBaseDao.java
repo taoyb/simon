@@ -23,8 +23,8 @@ public abstract class AbstractBaseDao<T,PK extends Serializable> implements Base
      * @Date: 2016-12-07 下午 1:46
      * @Des:保存对象
      */
-    public void addEntity(T entity){
-        tdao.addEntity(entity);
+    public T addEntity(T entity){
+        return tdao.addEntity(entity);
     }
     /**
      * @Author: TYB

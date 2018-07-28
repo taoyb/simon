@@ -19,4 +19,5 @@ public interface TybRecordService extends BaseDao<TybRecord,Long> {
     List<TybRecord> findByParentId(Long pid);
     List<Tree> findTreeRecordAll(String pid);
 
+    Tree toTransforTreeByRecord(TybRecord record);
 }

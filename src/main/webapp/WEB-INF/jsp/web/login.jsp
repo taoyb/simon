@@ -29,11 +29,11 @@
                 <form action="/login/admin" name="f" id="login" method="post">
                     <div class="input_outer">
                         <span class="u_user"></span>
-                        <input name="userName" id="userName" class="text" style="color: #FFFFFF !important" autofocus type="text" placeholder="请输入账户">
+                        <input name="userName" id="userName" value="admin" class="text" style="color: #FFFFFF !important" autofocus type="text" placeholder="请输入账户">
                     </div>
                     <div class="input_outer">
                         <span class="us_uer"></span>
-                        <input name="password" id="password" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
+                        <input name="password" id="password" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="123456" type="password" placeholder="请输入密码">
                     </div>
                     <div class="mb2"><a class="act-but submit" href="javascript:;" onclick="login()" style="color: #FFFFFF">登录</a></div>
                 </form><%--onclick="document.getElementById('login').submit();"--%>

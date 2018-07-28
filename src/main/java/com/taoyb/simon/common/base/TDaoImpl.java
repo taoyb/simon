@@ -12,8 +12,9 @@ import java.util.Map;
  */
 public class TDaoImpl<T,PK extends Serializable> extends SqlSessionDaoSupport implements TDao<T, Serializable> {
     @Override
-    public void addEntity(T entity) {
+    public T addEntity(T entity) {
         getSqlSession().insert(entity.getClass().getName()+".add",entity);
+        return entity;
     }
     @Override
     public void delEntity(Class<T> entityClass, Serializable serializable) {

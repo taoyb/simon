@@ -14,7 +14,7 @@ public interface BaseDao<T,PK extends Serializable> {
      * @Date: 2016-12-07 下午 1:46
      * @Des:保存对象
      */
-    public void addEntity(T entity);
+    public T addEntity(T entity);
     /**
      * @Author: TYB
      * @Date: 2016-12-07 下午 1:47
