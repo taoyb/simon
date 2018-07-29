@@ -17,7 +17,7 @@ public interface TybRecordService extends BaseDao<TybRecord,Long> {
     AjaxDone saveRecord(TybRecord record, String nav);
     AjaxDone delRecord(Long rid);
     List<TybRecord> findByParentId(Long pid);
-    List<Tree> findTreeRecordAll(String pid);
+    List<Tree> findTreeRecordAll(String pid,Boolean isLoadAll);
 
     Tree toTransforTreeByRecord(TybRecord record);
 }

@@ -74,10 +74,10 @@ public class TybRecordServiceImpl extends AbstractBaseDao<TybRecord, Long> imple
     }
 
     @Override
-    public List<Tree> findTreeRecordAll(String pid) {
+    public List<Tree> findTreeRecordAll(String pid,Boolean isLoadAll) {
         List<TybRecord> list = this.findByParentId(pid == null ? 0l : Long.parseLong(pid));
         List<Tree> treeList = new ArrayList<Tree>();
-        if (list.size() == 0) {
+        /*if (list.size() == 0) {
             Tree tree = new Tree();
             tree.setTarget("ajax");
             tree.setRel("jbsxBox");
@@ -88,17 +88,18 @@ public class TybRecordServiceImpl extends AbstractBaseDao<TybRecord, Long> imple
             tree.setpId(-1l);
             treeList.add(tree);
             return treeList;
-        }
+        }*/
         for (TybRecord record : list) {
             Tree tree = new Tree();
             tree.setTarget("ajax");
             tree.setRel("jbsxBox1");
             tree.setId(record.getRecordId());
-            tree.setName(record.getRecordName().trim().length() > 9 ? record.getRecordName().substring(0, 9) : record.getRecordName());
+            tree.setName(record.getRecordName().trim());
             tree.setType("0");
-            int count = this.findByParentId(record.getRecordId()).size();
-            if (count > 0) {
+            List<Tree> children = findTreeRecordAll(record.getRecordId().toString(),isLoadAll);
+            if (children.size()>0) {
                 tree.setIsParent(true);
+                if(isLoadAll) tree.setChildren(children);
             } else {
                 tree.setIsParent(false);
             }
@@ -115,7 +116,7 @@ public class TybRecordServiceImpl extends AbstractBaseDao<TybRecord, Long> imple
         tree.setTarget("ajax");
         tree.setRel("jbsxBox1");
         tree.setId(record.getRecordId());
-        tree.setName(record.getRecordName().trim().length() > 9 ? record.getRecordName().substring(0, 9) : record.getRecordName());
+        tree.setName(record.getRecordName().trim());
         tree.setType("0");
         int count = this.findByParentId(record.getRecordId()).size();
         if (count > 0) {

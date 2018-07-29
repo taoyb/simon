@@ -24,9 +24,11 @@
 <body>
     <nav class="uk-navbar">
         <ul class="uk-navbar-nav uk-hidden-small uk-navbar-center">
-            <c:forEach items="${list}" var="m" varStatus="l">
-                <li class="uk-active"><a href="">${m.menuName}${l.index}</a></li>
-            </c:forEach>
+            <%--<c:forEach items="${list}" var="m" varStatus="l">--%>
+                <%--<li class="uk-active"><a href="">${m.menuName}${l.index}</a></li>--%>
+                <li class="uk-active"><a href="">首页</a></li>
+                <li><a href="/blog/to_record_list">我的记录</a></li>
+            <%--</c:forEach>--%>
             <%--<li class="uk-parent" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
                 <a href="">Parent</a>
                 <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" style="top: 40px; left: 0px;">

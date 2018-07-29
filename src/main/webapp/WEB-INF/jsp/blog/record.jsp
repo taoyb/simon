@@ -13,7 +13,7 @@
     var setting = {
         async: {
             enable: true,
-            url:"/blog/record_left",
+            url:"/record/record_left",
             autoParam:["id=id", "pId=pid"]
         },
         view: {

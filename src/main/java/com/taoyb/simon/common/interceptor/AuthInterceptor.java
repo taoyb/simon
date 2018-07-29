@@ -24,7 +24,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
     private static final String[] IGNORE_URI = {"/", "findHeadMenu", "login", "loginOut", "connectWeixin"};
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String requestUrl = request.getRequestURL().toString();
+        /*String requestUrl = request.getRequestURL().toString();
         String[] sd = requestUrl.split("/");
         String subUrl = sd.length > 5 ? "/" : sd.length == 5 ? sd[4] : sd.length == 3 ? "/" : "";
         String referer = request.getHeader("referer");
@@ -32,10 +32,10 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         try {
             TybUser user = (TybUser) request.getSession().getAttribute("loginUser");
             if ("XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With")) || request.getParameter("ajax") != null) {
-                /*String applicationName = "/" + request.getContextPath().split("/")[request.getContextPath().split("/").length - 1] + "/";
+                *//*String applicationName = "/" + request.getContextPath().split("/")[request.getContextPath().split("/").length - 1] + "/";
                 if (requestUrl.endsWith(applicationName)) {
                     return true;
-                }*/
+                }*//*
                 boolean flag = false;
                 for (String s : IGNORE_URI) {
                     if (subUrl.indexOf(s) == 0) {
@@ -71,14 +71,14 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
                         return true;
                     }
                 }
-                /*if (StringUtils.isEmpty(JudgeUtils.getStrUrl(requestUrl))) {
+                *//*if (StringUtils.isEmpty(JudgeUtils.getStrUrl(requestUrl))) {
                     request.getRequestDispatcher("/login/loginOut").forward(request, response);
-                }*/
+                }*//*
             }
         } catch (IOException e) {
             e.printStackTrace();
             return false;
-        }
+        }*/
         return true;
     }
 }

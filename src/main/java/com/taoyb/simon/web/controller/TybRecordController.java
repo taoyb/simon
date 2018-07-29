@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
 /**
  * Created by taoyb on 2016-12-05.
  */
@@ -123,5 +126,13 @@ public class TybRecordController extends BaseController {
             model.addAttribute("record", rec);
         model.addAttribute("m", request.getParameter("m"));
         return "blog/addContent";
+    }
+
+    @RequestMapping(value = "/record_left",method = RequestMethod.POST)
+    public @ResponseBody
+    List<Tree> recordLeft(HttpServletRequest request) {
+        String pid = request.getParameter("id");
+        List<Tree> list= tybRecordService.findTreeRecordAll(pid,false);
+        return list;
     }
 }
